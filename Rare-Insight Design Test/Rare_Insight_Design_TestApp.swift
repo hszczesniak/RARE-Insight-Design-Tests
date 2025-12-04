@@ -7,11 +7,29 @@
 
 import SwiftUI
 
+//@main
+//struct PatientOverlayApp: App {
+//    var body: some Scene {
+//        WindowGroup {
+//            Design()
+//        }
+//    }
+//}
+
+// MARK: - App Entry Point
 @main
-struct Rare_Insight_Design_TestApp: App {
+struct PatientOverlayApp: App {
+    @StateObject private var auraModel = AuraViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(auraModel)
+        }
+        
+        ImmersiveSpace(id: "AuraSpace") {
+            ImmersiveView()
+                .environmentObject(auraModel)
         }
     }
 }
